@@ -14,14 +14,13 @@ function App() {
     const response = await fetch(url);
     const responseJson = await response.json(); // convert response to JSON
     if(responseJson.Search) {
-      setMovies(responseJson.Search);
-    }
-    
+      setMovies(responseJson.Search); // set movies to responseJson.Search
+    } 
   }
 
   useEffect(() => {
 		getMovies(searchValue);
-	}, [searchValue]);
+	}, [searchValue]); // only run the effect if searchValue changes
 
   return (
     <>
