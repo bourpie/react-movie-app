@@ -1,7 +1,7 @@
 const MovieListHeading = (props) => {
   return (
     
-      <h1 className="text-white">{props.heading}</h1>
+      <h1 className="text-white m-0">{props.heading}</h1>
   );
 }
 
