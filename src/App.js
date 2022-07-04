@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MovieList from './Components/MovieList';
@@ -6,11 +7,14 @@ import MovieListHeading from './Components/MovieListHeading';
 import SearchBox from './Components/SearchBox';
 
 function App() {
+
+  const movieListing = useSelector(state => state.movies.movies);
+  console.log(movieListing);
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   const getMovies = async (searchValue) => {
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=xxxxxx`;
+    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=xxxxxxxx`;
     const response = await fetch(url);
     const responseJson = await response.json(); // convert response to JSON
     if(responseJson.Search) {
@@ -30,9 +34,9 @@ function App() {
       </header>
       <main>
         <section aria-label="movie-list" className="d-flex">
-          <MovieList movies={movies} />
+          <MovieList movies={movieListing} />
         </section>
-      </main>
+      </main> 
     </>
   );
 }
